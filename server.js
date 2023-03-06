@@ -21,7 +21,11 @@ app.use(express.urlencoded({ extended:  false }));
 app.use(express.json());
 app.use('/api',routes);
 app.use('/uploads', express.static('uploads'));
-
+app.use('/', (req, res) => {
+    res.send(`
+  <h1>Welcome to food-express-APIs</h1>
+  `);
+});
 
 app.use(errorHandler);
 const PORT = process.env.PORT || APP_PORT;
