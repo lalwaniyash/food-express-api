@@ -53,7 +53,7 @@ const productController = {
                     name,
                     price,
                     size,
-                    image: filePath,
+                    image: path.join('uploads', req.file.filename),
                 });
             } catch (err) {
                 return next(err);
