@@ -29,7 +29,7 @@ const productController = {
             if (err) {
                 return next(CustomErrorHandler.serverError(err.message));
             }
-            const filePath = req.file.path;
+            const filePath = req.file.filename;
             // validation
             const { error } = productSchema.validate(req.body);
             if (error) {
