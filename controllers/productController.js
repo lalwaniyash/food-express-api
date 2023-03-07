@@ -117,7 +117,7 @@ const productController = {
         const imagePath = document._doc.image;
         // http://localhost:5000/uploads/1616444052539-425006577.png
         // approot/http://localhost:5000/uploads/1616444052539-425006577.png
-        fs.unlink(`${appRoot}/${imagePath}`, (err) => {
+        fs.unlink(path.join(appRoot, imagePath), (err) => {
             if (err) {
                 return next(CustomErrorHandler.serverError());
             } 
