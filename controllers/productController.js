@@ -29,7 +29,7 @@ const productController = {
             if (err) {
                 return next(CustomErrorHandler.serverError(err.message));
             }
-            const filePath = req.file.filename;
+            const filePath = req.file.path;
             // validation
             const { error } = productSchema.validate(req.body);
             if (error) {
@@ -53,7 +53,7 @@ const productController = {
                     name,
                     price,
                     size,
-                    image: path.join('uploads', req.file.filename),
+                    image: filePath,
                 });
             } catch (err) {
                 return next(err);
@@ -117,7 +117,7 @@ const productController = {
         const imagePath = document._doc.image;
         // http://localhost:5000/uploads/1616444052539-425006577.png
         // approot/http://localhost:5000/uploads/1616444052539-425006577.png
-        fs.unlink(path.join(appRoot, imagePath), (err) => {
+        fs.unlink(`${appRoot}/${imagePath}`, (err) => {
             if (err) {
                 return next(CustomErrorHandler.serverError());
             } 
